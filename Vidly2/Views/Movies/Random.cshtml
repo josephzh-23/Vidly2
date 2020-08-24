@@ -1,0 +1,31 @@
+﻿
+@model Vidly2.ViewModels.RandomViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+
+
+    if (Model.Customers.Count > 5)
+    {
+        string className = "popular";
+    }
+    else
+    {
+        string className = null;
+    }
+}
+
+<ul>
+    @foreach (var customer in Model.Customers)
+    {
+
+        <li style="margin-top:30px;"> @customer.Name</li>
+    }
+</ul>
+
+<p style="margin-top:30px; font-weight:bold">Printing the first customer name </p>
+<p>@Model.Customers[0].Name</p>
+
+
