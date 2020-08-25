@@ -14,8 +14,18 @@ namespace Vidly2.Controllers
     {
 
 
+        MyDBContext db = new MyDBContext();
 
 
+        // For executing raw queries 
+        public ViewResult get()
+        {
+            //Ex for reading data 
+
+           var movies = db.Movies.SqlQuery("Select * from Movies").ToList();
+
+            return View(movies);
+        }
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Titanic" };

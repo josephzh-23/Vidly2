@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Vidly2.Models.Movie>
+@{
+    ViewBag.Title = "get";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>get</h2>
+
+
+@foreach(var m in Model)
+{
+    <li>@m.Name</li>
+}
+
