@@ -16,5 +16,7 @@ namespace Vidly2.Models
         public DbSet<Movie> Movies { get; set; }// My domain models
 
         public DbSet<MembershipType> MembershipTypes { get; set; }
+
+        public DbSet<Genre> Genres { get; set; }
     }
 }

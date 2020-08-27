@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using Vidly2.Models;
+using System.Data.Entity;
 using Vidly2.ViewModels;
 
 namespace Vidly2.Controllers
@@ -14,17 +15,30 @@ namespace Vidly2.Controllers
     {
 
 
-        MyDBContext db = new MyDBContext();
+        private MyDBContext _context;
+
+        public MoviesController()
+        {
+            _context = new MyDBContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
 
         // For executing raw queries 
         public ViewResult get()
         {
             //Ex for reading data 
+            using (var db = new MyDBContext())
+            {
+                var movies = db.Movies.SqlQuery("Select * from Movies").ToList();
 
-           var movies = db.Movies.SqlQuery("Select * from Movies").ToList();
-
-            return View(movies);
+                return View(movies);
+            }
+            
         }
         public ActionResult Random()
         {
@@ -46,10 +60,34 @@ namespace Vidly2.Controllers
 
             return View(viewModel);
         }
+        public ActionResult Index()
+        {
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
+
+          
+            return View(movies);
+        }
+
+        [HttpGet]
+        public ActionResult New()
+        {
+            /* var genres = _context.Genres.ToList();*/
+            return View("MovieForm");
+        }
 
 
         // Lect 11
 
+        public ActionResult Details(int? id)
+        {
+            var movies = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+
+        
+
+            // Here we return the movie and the genre together 
+            return View(movies);
+
+        }
         public ActionResult Index2(int? pageNumber, string sortBy)
         {
             if (pageNumber.HasValue)
