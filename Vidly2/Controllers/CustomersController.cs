@@ -60,6 +60,7 @@ namespace Vidly2.Controllers
             }
 
 
+
         // This will save our code to the database 
            public ActionResult Save(Customer customer)
         {

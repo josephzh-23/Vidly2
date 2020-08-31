@@ -17,8 +17,12 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    /*Combine the jquery and bootstrap our stuff in lib folder 
+    
+    @Scripts.Render("~/bundles/lib")
+
+@*    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>

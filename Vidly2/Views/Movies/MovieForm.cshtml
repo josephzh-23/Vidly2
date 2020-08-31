@@ -2,10 +2,10 @@
 @model Vidly2.ViewModels.MovieFormViewModel
 
 @{
-    ViewBag.Title = Model.Title;
+    ViewBag.Title = "Movie";
 }
 
-<h2>@Model.Title</h2>
+<h2>Title</h2>
 
 @using (Html.BeginForm("Save", "Movies"))
 {
