@@ -1,0 +1,28 @@
+﻿@model Vidly2.Models.Student
+@{
+    ViewBag.Title = "CheckEmail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CheckEmail</h2>
+
+
+
+@using (Html.BeginForm("CheckEmail", "Home"))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Guid)
+        @Html.TextBoxFor(m => m.Guid, new { @class = "form-control" })
+
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}

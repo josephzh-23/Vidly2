@@ -1,7 +1,22 @@
-﻿@{
+﻿@model Vidly2.Models.Student
+
+@{
     ViewBag.Title = "About";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <p>Use this area to provide additional information.</p>
+
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    @{
+       var uri = Model.Name;
+    }
+</div>
+
+<a href="@uri">@Model.Name</a>
+
+<p> @Model.School</p>

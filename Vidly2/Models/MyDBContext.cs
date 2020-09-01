@@ -18,5 +18,8 @@ namespace Vidly2.Models
         public DbSet<MembershipType> MembershipTypes { get; set; }
 
         public DbSet<Genre> Genres { get; set; }
+
+        //creating student datatable
+        public DbSet<Student> Students { get; set; }
     }
 }
